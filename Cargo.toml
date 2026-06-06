@@ -1,15 +1,15 @@
 [package]
-name = "mnml-tickets-linear"
+name = "mnml-tracker-linear"
 version = "0.1.0"
 edition = "2024"
 license = "MIT"
 description = "Linear ticket viewer for mnml — terminal TUI with configurable tabs (saved views or GraphQL filter). Runs standalone or as an mnml-hosted pane."
 homepage = "https://mnml.sh"
-repository = "https://github.com/chris-mclennan/mnml-tickets-linear"
+repository = "https://github.com/chris-mclennan/mnml-tracker-linear"
 readme = "README.md"
 
 [[bin]]
-name = "mnml-tickets-linear"
+name = "mnml-tracker-linear"
 path = "src/main.rs"
 
 [dependencies]

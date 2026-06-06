@@ -1,8 +1,8 @@
-# mnml-tickets-linear
+# mnml-tracker-linear
 
-Linear ticket viewer for [mnml](https://mnml.sh) — terminal TUI with
-configurable tabs backed by Linear's GraphQL API. Same shape as
-[mnml-tickets-jira](https://github.com/chris-mclennan/mnml-tickets-jira),
+Linear ticket viewer for [mnml](https://mnml.sh) — terminal TUI
+with configurable tabs backed by Linear's GraphQL API. Same shape
+as [mnml-tracker-jira](https://github.com/chris-mclennan/mnml-tracker-jira),
 swapping JQL for Linear's filter input + saved views.
 
 ```
@@ -21,7 +21,7 @@ swapping JQL for Linear's filter input + saved views.
 ## Install
 
 ```sh
-cargo install --git https://github.com/chris-mclennan/mnml-tickets-linear mnml-tickets-linear
+cargo install --git https://github.com/chris-mclennan/mnml-tracker-linear mnml-tracker-linear
 ```
 
 (Homebrew tap + binary releases follow once the binary stabilises.)
@@ -32,21 +32,21 @@ cargo install --git https://github.com/chris-mclennan/mnml-tickets-linear mnml-t
    <https://linear.app/settings/api> ("Personal API keys" — *not*
    OAuth).
 
-2. **Save the token** to `~/.config/mnml-tickets-linear/token`
+2. **Save the token** to `~/.config/mnml-tracker-linear/token`
    (`chmod 600`).
 
 3. **Run once** to scaffold the config:
    ```sh
-   mnml-tickets-linear
+   mnml-tracker-linear
    ```
-   This writes `~/.config/mnml-tickets-linear.toml` and exits with
+   This writes `~/.config/mnml-tracker-linear.toml` and exits with
    instructions. Edit the `[[tabs]]` list to taste.
 
 4. **Re-run** — the TUI launches with your configured tabs.
 
 5. **Verify** the resolved config + auth state:
    ```sh
-   mnml-tickets-linear --check
+   mnml-tracker-linear --check
    ```
 
 ## Tabs
@@ -87,6 +87,7 @@ the other.
 | `PgUp` / `PgDn` | Jump 10 rows                                |
 | `g` / `G`      | Top / bottom                                 |
 | `Enter` / `o`  | Open focused ticket in browser               |
+| `y`            | Yank focused ticket's URL to OS clipboard    |
 | `r`            | Refresh active tab                           |
 | `q` / `Esc` / `Ctrl+C` | Quit                                |
 
@@ -98,7 +99,7 @@ the other.
 - 1-9 tab switching · ↑↓ navigation · open-in-browser · refresh
 - Blit mode (`--blit <socket>`) so mnml/tmnl can host as a pane
 
-**Planned (paralleling mnml-tickets-jira's v0.2):**
+**Planned (paralleling mnml-tracker-jira's v0.2):**
 - Right-half ticket detail panel (description + comments)
 - Filter editor overlay (`/`)
 - Status transition picker (`t` — mutate workflowState)
@@ -107,6 +108,16 @@ the other.
 - Bulk-transition across selected rows
 - Inline-edit assignee / project / cycle
 
+## Rename note
+
+This binary was originally published as `mnml-tickets-linear`;
+renamed to `mnml-tracker-linear` on 2026-06-06 to match the
+family's `mnml-<class>-<name>` convention — consistent with the
+existing `mnml-tracker-jira`. GitHub auto-redirects the old URL.
+The `~/.config/mnml-tickets-linear.toml` and
+`~/.config/mnml-tickets-linear/token` from a previous install
+should be moved to the new `mnml-tracker-linear` paths.
+
 ## License
 
-MIT.
+MIT. See [CONTRIBUTING.md](CONTRIBUTING.md) for fork + PR guidance.
