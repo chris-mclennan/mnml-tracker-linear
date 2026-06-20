@@ -4,6 +4,7 @@ mod blit;
 mod config;
 mod keys;
 mod linear;
+mod theme;
 mod ui;
 
 use anyhow::{Context, Result};
