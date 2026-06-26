@@ -1,6 +1,5 @@
 mod app;
 mod auth;
-mod blit;
 mod config;
 mod keys;
 mod linear;
@@ -20,11 +19,6 @@ struct Cli {
     /// Print the resolved config + auth state and exit.
     #[arg(long)]
     check: bool,
-    /// Blit-host mode — render into a UDS-served cell grid instead of
-    /// the local terminal. Used by mnml / tmnl to host this binary as
-    /// a pane (`:host.launch mnml-tickets-linear --blit /tmp/x.sock`).
-    #[arg(long, value_name = "SOCKET")]
-    blit: Option<String>,
 }
 
 #[tokio::main]
@@ -60,9 +54,5 @@ async fn main() -> Result<()> {
     let client = linear::Client::new(&token)?;
     let mut app = app::App::new(cfg, client).await?;
 
-    if let Some(socket) = cli.blit {
-        blit::run(&mut app, std::path::Path::new(&socket)).await
-    } else {
-        ui::run(&mut app).await
-    }
+    ui::run(&mut app).await
 }
